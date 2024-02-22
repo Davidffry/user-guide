@@ -18,14 +18,14 @@ has been introduced. This is mutually exclusive with `Running` as they
 have somewhat overlapping conditions. There are currently four
 RunStrategies defined:
 
--   Always: The system is tasked with keeping the VM in a running
+-   **Always** : The system is tasked with keeping the VM in a running
     state.
     This is achieved by respawning a VirtualMachineInstance whenever
     the current one terminated in a controlled (e.g. shutdown from
     inside the guest) or uncontrolled (e.g. crash) way.
     This behavior is equal to `spec.running: true`.
 
--   RerunOnFailure: Similar to `Always`, except that the VM is only
+-   **RerunOnFailure** : Similar to `Always`, except that the VM is only
     restarted if it terminated in an uncontrolled way (e.g. crash)
     and due to an infrastructure reason (i.e. the node crashed,
     the KVM related process OOMed).
@@ -34,12 +34,12 @@ RunStrategies defined:
     Note: Guest sided crashes (i.e. BSOD) are not covered by this.
     In such cases liveness checks or the use of a watchdog can help.
 
--   Manual: The system will not automatically turn the VM on or off,
+-   **Manual** : The system will not automatically turn the VM on or off,
     instead the user manually controlls the VM status by issuing
     start, stop, and restart commands on the VirtualMachine
     subresource endpoints.
 
--   Halted: The system is asked to ensure that no VM is running.
+-   **Halted** : The system is asked to ensure that no VM is running.
     This is achieved by stopping any VirtualMachineInstance that is
     associated ith the VM. If a guest is already running, it will be
     stopped.
